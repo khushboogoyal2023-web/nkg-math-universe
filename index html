@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>📐</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#7c3aed" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>एनकेजी गणित ब्रह्मांड</title>
+    <style>
+      /* App download button ke liye styling */
+      .download-btn {
+        display: inline-block;
+        background-color: #7c3aed;
+        color: white;
+        padding: 12px 24px;
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+        border-radius: 8px;
+        margin: 20px auto;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: background 0.3s;
+      }
+      .download-btn:hover {
+        background-color: #6d28d9;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div style="text-align: center; margin-top: 50px; font-family: sans-serif;">
+        <h1>एनकेजी गणित ब्रह्मांड में आपका स्वागत है</h1>
+        <p>हमारा नया और तेज़ एंड्रॉइड ऐप डाउनलोड करने के लिए नीचे दिए गए बटन पर क्लिक करें:</p>
+        
+        <a href="https://drive.google.com/file/d/1JIHLf6ZBAUBN9CkX3zgpgQ8-dJ5KPOsK/view?usp=drivesdk" target="_blank" class="download-btn">
+          📲 नया ऐप (APK) डाउनलोड करें
+        </a>
+      </div>
+    </div>
+
+    <script type="module" src="/main.jsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js');
+        });
+      }
+    </script>
+  </body>
+</html>
