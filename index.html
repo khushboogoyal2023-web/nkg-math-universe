@@ -1,84 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-  <script>
-   self["MonacoEnvironment"] = (function (paths) {
-          return {
-            globalAPI: false,
-            getWorkerUrl : function (moduleId, label) {
-              var result =  paths[label];
-              if (/^((http:)|(https:)|(file:)|(\/\/))/.test(result)) {
-                var currentUrl = String(window.location);
-                var currentOrigin = currentUrl.substr(0, currentUrl.length - window.location.hash.length - window.location.search.length - window.location.pathname.length);
-                if (result.substring(0, currentOrigin.length) !== currentOrigin) {
-                  var js = '/*' + label + '*/importScripts("' + result + '");';
-                  var blob = new Blob([js], { type: 'application/javascript' });
-                  return URL.createObjectURL(blob);
-                }
-              }
-              return result;
-            }
-          };
-        })({
-  "editorWorkerService": "monacoeditorwork/editor.worker.bundle.js",
-  "typescript": "monacoeditorwork/ts.worker.bundle.js",
-  "json": "monacoeditorwork/json.worker.bundle.js",
-  "css": "monacoeditorwork/css.worker.bundle.js",
-  "html": "monacoeditorwork/html.worker.bundle.js",
-  "javascript": "monacoeditorwork/ts.worker.bundle.js",
-  "less": "monacoeditorwork/css.worker.bundle.js",
-  "scss": "monacoeditorwork/css.worker.bundle.js",
-  "handlebars": "monacoeditorwork/html.worker.bundle.js",
-  "razor": "monacoeditorwork/html.worker.bundle.js"
-});
-  </script>
-  
-  <script src="js/frontend-config.js"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = { darkMode: 'class' }
-  </script>
-  
-  <script type="application/javascript">
-   var isBypassEnabled = document.cookie.split(';').some(function(cookie) {
-        return cookie.trim().indexOf('no_cmp=') === 0;
-      });
-      var UC_UI_SUPPRESS_CMP_DISPLAY = isBypassEnabled;
-  </script>
-  <script async="" src="https://accounts.google.com/gsi/client"></script>
-  <meta charset="utf-8">
-  <link href="images/f4e87664b_IMG_20260606_205529.jpg" rel="icon">
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
-  <meta content="#000000" name="theme-color">
-  <meta content="An enchanting, cartoon-filled adventure through the world of mathematics, designed to help kids from Classes 1-9 master everything from multiplication tables to complex geometry concepts through fun games and interactive quizzes." name="description">
-  <meta content="yes" name="mobile-web-app-capable">
-  <meta content="black" name="apple-mobile-web-app-status-bar-style">
-  <meta content="NKG MATH " name="apple-mobile-web-app-title">
-  <link href="images/f4e87664b_IMG_20260606_205529.jpg" rel="apple-touch-icon">
-  <link href="manifest.json" rel="manifest">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NKG MATH</title>
-
-  <script crossorigin="" src="js/index-B8TPhwq2.js" type="module"></script>
-  
-  <link crossorigin="" href="static/rolldown-runtime-CMxvf4Kt.js" rel="modulepreload">
-  <link crossorigin="" href="static/preload-helper-zJ_50EbN.js" rel="modulepreload">
-  <link crossorigin="" href="static/runtime-QtgwY_nV.js" rel="modulepreload">
-  <link crossorigin="" href="static/backend-CKnTvK2Z.js" rel="modulepreload">
-  <link crossorigin="" href="static/errorReporting-BXA1RlJZ.js" rel="modulepreload">
-  <link crossorigin="" href="static/vendor-react-CUzCXWdl.js" rel="modulepreload">
-  <link crossorigin="" href="static/vendor-data-CpeAru8i.js" rel="modulepreload">
-  <link crossorigin="" href="static/vendor-utils-D1gCJUP_.js" rel="modulepreload">
-  <link crossorigin="" href="static/v4-DqR3yzBO.js" rel="modulepreload">
-  <link crossorigin="" href="static/axiosClient-DswW2LTv.js" rel="modulepreload">
-  <link crossorigin="" href="static/base-C8p9FCR2.js" rel="modulepreload">
-  <link crossorigin="" href="static/AuthAPI-BpW2Brl0.js" rel="modulepreload">
-  <link crossorigin="" href="static/vendor-ui-B_LfccVX.js" rel="modulepreload">
-  <link crossorigin="" href="css/index-DHaRma6S.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background-color: #0f172a; color: white; }
+  </style>
 </head>
-<body>
-  <noscript>
-    You need to enable JavaScript to run this app.
-  </noscript>
-  <div id="root"></div>
+<body class="font-sans antialiased selection:bg-purple-500 selection:text-white">
+
+  <header class="p-6 bg-purple-700 text-center shadow-lg sticky top-0 z-50">
+    <h1 class="text-3xl font-extrabold tracking-tight text-white flex justify-center items-center gap-2">
+      🔢 NKG MATH UNIVERSE
+    </h1>
+    <p class="text-purple-200 text-sm mt-2 font-medium">कक्षा 1 से 9 तक गणित की पूरी दुनिया (Bina Branding)</p>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 py-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      
+      <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 hover:border-purple-500 transition duration-300 shadow-xl flex flex-col justify-between">
+        <div>
+          <span class="text-4xl">📊</span>
+          <h3 class="text-xl font-bold text-purple-400 mt-4">पहाड़े (Multiplication Tables)</h3>
+          <p class="text-slate-400 text-sm mt-2">कक्षा 1 से 9 के छात्रों के लिए बेसिक से एडवांस पहाड़े।</p>
+        </div>
+        <button class="mt-6 w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-xl transition">खोलें</button>
+      </div>
+
+      <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 hover:border-purple-500 transition duration-300 shadow-xl flex flex-col justify-between">
+        <div>
+          <span class="text-4xl">📐</span>
+          <h3 class="text-xl font-bold text-purple-400 mt-4">सूत्र (Math Formulas)</h3>
+          <p class="text-slate-400 text-sm mt-2">ज्यामिति, बीजगणित और अन्य महत्वपूर्ण सूत्र एक जगह।</p>
+        </div>
+        <button class="mt-6 w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-xl transition">खोलें</button>
+      </div>
+
+      <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 hover:border-purple-500 transition duration-300 shadow-xl flex flex-col justify-between">
+        <div>
+          <span class="text-4xl">🧠</span>
+          <h3 class="text-xl font-bold text-purple-400 mt-4">मैथ्स क्विज़ (Interactive Quiz)</h3>
+          <p class="text-slate-400 text-sm mt-2">दिमाग तेज करने वाले टेस्ट और बहुविकल्पीय प्रश्न।</p>
+        </div>
+        <button class="mt-6 w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-xl transition">खोलें</button>
+      </div>
+
+      <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 hover:border-purple-500 transition duration-300 shadow-xl flex flex-col justify-between">
+        <div>
+          <span class="text-4xl">🎮</span>
+          <h3 class="text-xl font-bold text-purple-400 mt-4">मैथ्स गेम्स (Fun Games)</h3>
+          <p class="text-slate-400 text-sm mt-2">खेल-खेल में गणित की मुश्किल पहेलियां सुलझाएं।</p>
+        </div>
+        <button class="mt-6 w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-xl transition">खोलें</button>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="text-center py-6 text-slate-500 text-xs border-t border-slate-800 mt-12">
+    © 2026 NKG MATH | All Rights Reserved.
+  </footer>
+
 </body>
 </html>
