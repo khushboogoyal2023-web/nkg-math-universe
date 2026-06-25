@@ -2,51 +2,110 @@
 <html lang="hi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NKG MATH UNIVERSE</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    body {
+      background: linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%);
+      min-height: 100vh;
     }
-    body, html {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background-color: #6d28d9; /* Original App ka theme color */
+    .capsule-btn {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.2s ease;
     }
-    .app-wrapper {
-      width: 100%;
-      height: 100%;
-      position: relative;
-    }
-    /* Reverse Proxy ke zariye X-Frame-Options ko bypass karne ke liye */
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-    /* Unki branding block karne ke liye bottom aur top overlay */
-    .bottom-blocker {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 45px;
-      background-color: #4c1d95; 
-      z-index: 9999;
-      pointer-events: none;
+    .capsule-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.05);
     }
   </style>
 </head>
-<body>
+<body class="text-white font-sans antialiased pb-12">
 
-  <div class="app-wrapper">
-    <iframe src="https://api.allorigins.win/raw?url=https://nkg-math-universe-app.base44.app"></iframe>
+  <div class="max-w-4xl mx-auto px-4 pt-8 text-center">
     
-    <div class="bottom-blocker"></div>
+    <div class="flex flex-wrap justify-center gap-2 mb-8">
+      <button class="capsule-btn px-4 py-1.5 rounded-full text-sm font-medium">➕ जोड़</button>
+      <button class="capsule-btn px-4 py-1.5 rounded-full text-sm font-medium">➖ घटाव</button>
+      <button class="capsule-btn px-4 py-1.5 rounded-full text-sm font-medium">✖️ गुणा</button>
+      <button class="capsule-btn px-4 py-1.5 rounded-full text-sm font-medium">➗ भाग</button>
+      <button class="capsule-btn px-4 py-1.5 rounded-full text-sm font-medium">📐 ज्यामिति</button>
+      <button class="capsule-btn px-4 py-1.5 rounded-full text-sm font-medium">✏️ मापन</button>
+      <button onclick="openTab('tables')" class="capsule-btn bg-yellow-400 text-purple-950 font-bold px-4 py-1.5 rounded-full text-sm">🔢 पहाड़े</button>
+      <button onclick="openTab('formulas')" class="capsule-btn bg-yellow-400 text-purple-950 font-bold px-4 py-1.5 rounded-full text-sm">📜 सूत्र</button>
+    </div>
+
+    <h1 class="text-4xl md:text-5xl font-black tracking-tight text-yellow-300 drop-shadow-md">
+      NKG MATH UNIVERSE
+    </h1>
+    <p class="text-purple-100 text-base mt-2 font-medium">
+      कक्षा 1 से 9 तक – गणित की पूरी दुनिया एक जगह!
+    </p>
+
+    <div class="mt-8 bg-black/30 border border-white/10 rounded-2xl p-6 min-h-[300px]" id="workspace">
+      <div id="default-view">
+        <p class="text-purple-200 text-lg mt-12">ऊपर दिए गए किसी भी बटन पर क्लिक करके सीखना शुरू करें! 🚀</p>
+        
+        <div class="flex justify-center gap-4 text-3xl mt-6 grayscale opacity-80">
+          <span>🦁</span> <span>🐯</span> <span>🐻</span> <span>🐼</span> <span>🐱</span>
+        </div>
+      </div>
+
+      <div id="tables-view" class="hidden">
+        <h2 class="text-xl font-bold text-yellow-300 mb-4">🔢 1 से 100 तक के पहाड़े</h2>
+        <div class="flex justify-center gap-2 mb-4">
+          <input type="number" id="table-num" min="1" max="100" value="2" class="bg-purple-950 border border-purple-500 rounded-xl px-4 py-2 text-center w-24 text-white text-lg font-bold">
+          <button onclick="generateTable()" class="bg-yellow-400 text-purple-950 font-bold px-6 py-2 rounded-xl hover:bg-yellow-300 transition">पहाड़ा देखें</button>
+        </div>
+        <div id="table-result" class="grid grid-cols-2 sm:grid-cols-5 gap-2 bg-purple-900/50 p-4 rounded-xl max-w-xl mx-auto font-mono text-lg">
+          </div>
+      </div>
+
+      <div id="formulas-view" class="hidden text-left max-w-xl mx-auto">
+        <h2 class="text-xl font-bold text-yellow-300 mb-4 text-center">📜 गणित के सभी महत्वपूर्ण सूत्र</h2>
+        <div class="space-y-3">
+          <div class="bg-purple-900/40 p-3 rounded-xl border border-white/5">
+            <span class="text-yellow-300 font-bold block">वर्ग का क्षेत्रफल (Area of Square):</span>
+            <code class="text-lg">भुजा × भुजा (Side²)</code>
+          </div>
+          <div class="bg-purple-900/40 p-3 rounded-xl border border-white/5">
+            <span class="text-yellow-300 font-bold block">आयत का क्षेत्रफल (Area of Rectangle):</span>
+            <code class="text-lg">लंबाई × चौड़ाई (L × W)</code>
+          </div>
+          <div class="bg-purple-900/40 p-3 rounded-xl border border-white/5">
+            <span class="text-yellow-300 font-bold block">वृत्त का क्षेत्रफल (Area of Circle):</span>
+            <code class="text-lg">πr² (जहां π = 22/7)</code>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
+  <script>
+    function openTab(tabName) {
+      document.getElementById('default-view').classList.add('hidden');
+      document.getElementById('tables-view').classList.add('hidden');
+      document.getElementById('formulas-view').classList.add('hidden');
+      
+      if(tabName === 'tables') {
+        document.getElementById('tables-view').classList.remove('hidden');
+        generateTable();
+      } else if(tabName === 'formulas') {
+        document.getElementById('formulas-view').classList.remove('hidden');
+      }
+    }
+
+    function generateTable() {
+      const num = document.getElementById('table-num').value || 2;
+      let html = '';
+      for(let i=1; i<=10; i++) {
+        html += `<div class="bg-purple-950/60 p-2 rounded border border-white/5">${num} × ${i} = ${num*i}</div>`;
+      }
+      document.getElementById('table-result').innerHTML = html;
+    }
+  </script>
 </body>
 </html>
